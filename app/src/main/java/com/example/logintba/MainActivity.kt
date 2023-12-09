@@ -33,7 +33,13 @@ class MainActivity() : AppCompatActivity() {
             builder.setTitle("Welcome: $user")
             builder.setCancelable(false)
             builder.setPositiveButton("Yes") {
-                    dialog, which -> finish()
+                    dialog, which ->
+                    // Create an Intent object that targets the next form's activity class
+                    val intent = Intent(this, MainShifts::class.java)
+                    // Use the startActivity method to start the next form's activity
+                    startActivity(intent)
+
+                    finish()
             }
 
             builder.setNegativeButton("No") {

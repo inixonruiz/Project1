@@ -13,6 +13,11 @@
         android:theme="@style/Theme.LoginTBA"
         tools:targetApi="31">
         <activity
+            android:name=".MainShifts"
+            android:exported="false"
+            android:label="@string/title_activity_main_shifts"
+            android:theme="@style/Theme.LoginTBA" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
