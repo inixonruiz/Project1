@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
+
 class ViewShiftsActivity : AppCompatActivity() {
 
     private lateinit var dateListView: ListView
@@ -27,16 +28,20 @@ class ViewShiftsActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
 
         // Read dates from Firebase and display in ListView
+
         val user = FirebaseAuth.getInstance().currentUser?.uid
-        val dateReference = database.getReference("dates").child(user.toString())
+        val dateReference = database.getReference("dates")
 
         dateReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val dates = mutableListOf<String>()
                 for (dateSnapshot in snapshot.children) {
-                    val date = dateSnapshot.getValue(String::class.java)
-                    date?.let { dates.add(it) }
-                }
+                    if (dateSnapshot.key != FirebaseAuth.getInstance().currentUser?.uid){
+                    for (date2Snapshot in dateSnapshot.children){
+                        val date = date2Snapshot.value as String
+                            dates.add(date)
+                    }
+                }}
 
                 // Display dates in the ListView
                 val adapter = ArrayAdapter(this@ViewShiftsActivity,android.R.layout.simple_list_item_1, dates)
