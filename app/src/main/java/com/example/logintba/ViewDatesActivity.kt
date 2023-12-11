@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -27,7 +28,8 @@ class ViewDatesActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
 
         // Read dates from Firebase and display in ListView
-        val dateReference = database.getReference("dates")
+        val user = FirebaseAuth.getInstance().currentUser?.uid
+        val dateReference = database.getReference("dates").child(user.toString())
         dateReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val dates = mutableListOf<String>()
