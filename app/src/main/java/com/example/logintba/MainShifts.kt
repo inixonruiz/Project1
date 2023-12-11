@@ -56,4 +56,10 @@ class MainShifts : ComponentActivity() {
         val intent = Intent(this, ViewDatesActivity::class.java)
         startActivity(intent)
     }
+
+    fun onViewShiftsButtonClick(view: android.view.View) {
+        // Handle the click of the "View Dates" button
+        val intent = Intent(this, ViewShiftsActivity::class.java)
+        startActivity(intent)
+    }
 }

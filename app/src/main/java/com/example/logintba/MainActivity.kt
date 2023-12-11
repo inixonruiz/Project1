@@ -30,7 +30,8 @@ class MainActivity() : AppCompatActivity() {
         fun message(user: String?) {
             val builder = AlertDialog.Builder(this)
             builder.setMessage("Successful session started")
-            builder.setTitle("Welcome: $user")
+            val username = user?.substringBefore("@")
+            builder.setTitle("Welcome: $username. Do you want to see your shift times?")
             builder.setCancelable(false)
             builder.setPositiveButton("Yes") {
                     dialog, which ->

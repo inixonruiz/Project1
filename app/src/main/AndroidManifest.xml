@@ -16,6 +16,9 @@
             android:name=".ViewDatesActivity"
             android:exported="false"/>
         <activity
+            android:name=".ViewShiftsActivity"
+            android:exported="false"/>
+        <activity
             android:name=".MainShifts"
             android:exported="false"
             android:label="@string/title_activity_main_shifts"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainShifts">
+    tools:context=".ViewShiftsActivity">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,41 +13,32 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".MainShifts">
+        tools:context=".ViewShiftsActivity">
 
-        <DatePicker
-            android:id="@+id/datePicker"
+        <ListView
+            android:id="@+id/dateListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <Button
-            android:id="@+id/sendButton"
+            android:id="@+id/btnAddShift"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send Date"
-            android:onClick="onSendButtonClick"/>
-
-        <Button
-            android:id="@+id/btnViewDates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View Dates"
+            android:text="Add Shift Date"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            android:onClick="onViewDatesButtonClick" />
-
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
         <Button
-            android:id="@+id/btnShifts"
+            android:id="@+id/btnGoBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shifts availables"
+            android:text="Go Back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            android:onClick="onViewShiftsButtonClick" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
