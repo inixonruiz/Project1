@@ -2,9 +2,12 @@ package com.example.logintba
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -62,5 +65,18 @@ class ViewShiftsActivity : AppCompatActivity() {
             // Finish the current activity to remove it from the back stack
             finish()
         }
-    }
-}
+
+        //Set a Click listener for the List View
+        dateListView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+            // Get the selected date from the list
+            val selectedDate = dateListView.getItemAtPosition(position) as String
+
+            Toast.makeText(applicationContext,"Selected: $selectedDate",Toast.LENGTH_LONG).show()
+
+            // Navigate to the ShiftDetailsActivity to display the selected date's details
+            //val intent = Intent(this, ViewShiftsActivity::class.java)
+            //intent.putExtra("date", selectedDate)
+            //startActivity(intent)
+        }
+
+}}
