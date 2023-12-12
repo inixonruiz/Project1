@@ -30,7 +30,8 @@ class ViewDatesActivity : AppCompatActivity() {
         // Read dates from Firebase and display in ListView
         val user = FirebaseAuth.getInstance().currentUser?.uid
         val dateReference = database.getReference("dates").child(user.toString())
-        dateReference.addValueEventListener(object : ValueEventListener {
+        val dateQuery = dateReference.orderByValue()
+        dateQuery.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val dates = mutableListOf<String>()
                 for (dateSnapshot in snapshot.children) {
